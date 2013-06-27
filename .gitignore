@@ -1,0 +1,6 @@
+server/apiclient/*
+server/oauth2client/*
+server/id_secret.py
+server/*.dat
+sqlite3
+*.DS_Store
