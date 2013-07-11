@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 hayatitude
+  div#map-canvas
+
+  div(style="display:none")
+    each latitude in latitudes
+      div.latitudes=latitude.latitude
+      div.longitudes=latitude.longitude

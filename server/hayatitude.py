@@ -17,8 +17,6 @@ import sqlite3
 import os.path
 import pprint
 
-import id_secret
-
 from apiclient.discovery import build
 from oauth2client.file import Storage
 from oauth2client.client import AccessTokenRefreshError
@@ -59,7 +57,7 @@ def main():
 
     mintime = minTime()
 
-    flow = OAuth2WebServerFlow(CLIENT_ID, CLIENT_SECRET, URL)
+    flow = OAuth2WebServerFlow('', '', URL)
 
     storage = Storage('credentials.dat')
     credentials = storage.get()
@@ -72,7 +70,7 @@ def main():
     service = build('latitude', 'v1', http=credentials.authorize(http))
 
     res = service.location().list(min_time=mintime).execute()
-    #insertData(res.get('items', []))
+    insertData(res.get('items', []))
     pprint.pprint(res.get('items', []))
 
 
