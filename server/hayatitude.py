@@ -24,7 +24,7 @@ from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.tools import run
 
 
-URL = 'https://www.googleapis.com/auth/latitude'
+URL = 'https://www.googleapis.com/auth/latitude.all.best'
 
 
 def minTime():
@@ -69,7 +69,7 @@ def main():
 
     service = build('latitude', 'v1', http=credentials.authorize(http))
 
-    res = service.location().list(min_time=mintime).execute()
+    res = service.location().list(min_time=mintime, max_results=None, granularity='best', max_time=None).execute()
     insertData(res.get('items', []))
     pprint.pprint(res.get('items', []))
 
